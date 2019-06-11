@@ -59,7 +59,7 @@ routes.post('/create-account', function(req, res) {
 
 // show the sign-in page
 routes.get('/sign-in', function(req, res) {
-  res.render('sign-in2.html')
+  res.render('sign-in.html')
 })
 
 // handle the post to sign-in request
@@ -82,14 +82,14 @@ routes.post('/sign-in', (req, res) => {
     }
     // if hashed passwords do not match, render the sign-in screen with an error message
     else {
-      res.render('sign-in2.html', {
+      res.render('sign-in.html', {
         errorMessage: 'Email address and password do not match'
       })
     }
   }
   // if findByEmail does return a null value, render the sign-in screen with an error message
   else {
-    res.render('sign-in.html2', {
+    res.render('sign-in.html', {
       errorMessage: 'No user with that email exists'
     })
   }
