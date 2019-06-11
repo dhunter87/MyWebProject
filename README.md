@@ -35,3 +35,7 @@ To Do List
 
 # work out how to track a users most visited categories
 - used for returning the suggested categories on the main screen cards
+
+# work out if i need a new blog-category table (for assigning multiple categories to a single blog)
+- used for a blog which would be in multiple categories
+- blog_id & cat_id would be the composit primary key (see followers table)

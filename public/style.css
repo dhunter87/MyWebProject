@@ -98,7 +98,7 @@ main form {
     padding: 20px 40px 40px;
     max-width: 500px;
     text-align: left;
-    background: darkgrey;
+    background:rgb(145, 80, 230);
     border-bottom: 4px solid #ccc;
     border-radius: 6px;
 }
@@ -107,7 +107,7 @@ main form {
     transform: scale(1);
     border-color: black;
     color: black;
-    background: darkgrey;
+    background: lightgray;
     border : 2px solid white;
 
 }
@@ -116,7 +116,7 @@ main form {
     padding: 20px 40px 40px;
     max-width: 500px;
     text-align: left;
-    background: darkgray;
+    background: white;
     /*border-bottom: 4px solid #ccc;*/
     border-radius: 6px;
     border : 2px solid black;
@@ -126,7 +126,7 @@ main form {
     transform: scale(1.1);
     border-color: black;
     color: black;
-    background:  rgb(160, 29, 248);
+    background:  rgb(145, 80, 230);
     border : 2px solid white;
 
 }
