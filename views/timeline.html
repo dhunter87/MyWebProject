@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Community Timebank</title>
+
+    <!-- Tailwind.css is a CSS library. Read the docs here: -->
+    <!-- https://tailwindcss.com/docs/what-is-tailwind -->
+    <link rel="stylesheet" href="/tailwind.css" />
+  </head>
+  <body class="bg-grey-lightest">
+    <header class="fixed pin-x pin-t bg-purple shadow text-white">
+      <div
+        class="mx-auto h-16 p-4 flex items-center justify-between"
+        style="width: 800px"
+      >
+        <h2>Community Timebank</h2>
+        <div>
+          Signed in as {{ user.name }} ({{ user.email }})
+          <a
+          href="/blogs"
+          class="text-white border border-white rounded p-2 no-underline hover:bg-purple-light ml-4"
+        >
+          Back
+        </a>
+
+        </div>
+      </div>
+    </header>
+
+    <main
+      style="width: 800px"
+      class="mx-auto mt-16 pt-4 flex flex-col justify-center "
+    >      
+      <section
+        class="flex flex-wrap border border-grey-light border-l-0 border-r-0 border-b-0 mt-6 pt-6"
+      >
+      <p>Community Time Line (In date order)</p>
+        {{#each blogs}}
+        <a
+          class="flex-auto w-full m-4 p-5 bg-white shadow rounded-lg text-black no-underline"
+          href="/blogs/{{ blog_id }}"
+        >
+          <h3 class="text-grey-darker uppercase text-base font-normal">
+            {{ startTime }}
+          </h3>
+          <p class="text-xl mt-2">
+            {{ task  }} 
+            <span
+              class="uppercase text-sm text-grey-darker font-semibold -ml-1"
+            >
+            </span>
+            for {{ duration }}
+            <span
+              class="uppercase text-sm text-grey-darker font-semibold -ml-1"
+            >
+              hrs
+            </span>
+            <span
+            class="text-xl mt-2"
+          >
+            User Name : {{name}}
+          </span>
+          </p>
+        </a>
+        {{/each}}
+      </section>
+      <br>
+      <p>RANKING BY TOTAL TASKS (TOP 5)</p>
+      <br>
+      <section>
+          
+        <div class="bg-white shadow-md rounded my-6">
+      <table class="text-left w-full border-collapse">
+        <tr>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Email</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Hours Banked</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Total Tasks</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Average Time</th>
+        </tr>
+        {{#each TotalTasksRanking}}
+        <tr>
+          <td class="py-4 px-6 border-b border-grey-light">{{name}}</td>
+          <td class="py-4 px-6 border-b border-grey-light">{{email}}</td>
+          <td class="py-4 px-6 border-b border-grey-light">{{hoursBanked}}</td>
+          <td class="py-4 px-6 border-b border-grey-light">{{totalTasks}}</td>
+          <td class="py-4 px-6 border-b border-grey-light">{{averageTimeTaken}}</td>
+        </tr>
+        {{/each}}
+      </table>
+      </div>
+
+      </section>
+      <br>
+      <p>RANKING BY HOURS BANKED (TOP 5)</p>
+      <br>
+      <section>
+          
+        <div class="bg-white shadow-md rounded my-6">
+      <table class="text-left w-full border-collapse">
+        <tr>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Email</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Hours Banked</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Total Tasks</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Average Time</th>
+        </tr>
+        {{#each HoursBankedRanking}}
+        <tr>
+          <td class="py-4 px-6 border-b border-grey-light">{{name}}</td>
+          <td class="py-4 px-6 border-b border-grey-light">{{email}}</td>
+          <td class="py-4 px-6 border-b border-grey-light">{{hoursBanked}}</td>
+          <td class="py-4 px-6 border-b border-grey-light">{{totalTasks}}</td>
+          <td class="py-4 px-6 border-b border-grey-light">{{averageTimeTaken}}</td>
+        </tr>
+        {{/each}}
+      </table>
+      </div>
+
+      </section>
+      <br>
+      <p>RANKING BY AVERAGE TIME TAKEN (TOP 5)</p>
+      <br>
+      <section>
+          
+        <div class="bg-white shadow-md rounded my-6">
+      <table class="text-left w-full border-collapse">
+        <tr>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Email</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Hours Banked</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Total Tasks</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Average Time</th>
+        </tr>
+        {{#each AverageTimeRanking}}
+        <tr>
+          <td class="py-4 px-6 border-b border-grey-light">{{name}}</td>
+          <td class="py-4 px-6 border-b border-grey-light">{{email}}</td>
+          <td class="py-4 px-6 border-b border-grey-light">{{hoursBanked}}</td>
+          <td class="py-4 px-6 border-b border-grey-light">{{totalTasks}}</td>
+          <td class="py-4 px-6 border-b border-grey-light">{{averageTimeTaken}}</td>
+        </tr>
+        {{/each}}
+      </table>
+      </div>
+
+      </section>
+    </main>
+  </body>
+</html>

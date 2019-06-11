@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>BlogSite</title>
+    <link rel="stylesheet" href="../public/tailwind.css"/>
+    <link rel="stylesheet" href="../public/style.css"/>
+    
+    <link rel="stylesheet" href="/tailwind.css" />
+    <link rel="stylesheet" href="/style.css"/>
+  </head>
+  <body class="bg-grey-lightest">
+      
+    <nav>
+            <p>BlogSite</p>
+            <ul>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">About Me</a></li>
+                <li><a href="#">Protfolio</a>
+                    <ul>
+                        <li><a href="#">Digital Art</a></li>
+                        <li><a href="#">Video Production</a></li>
+                        <li><a href="#">Web Development</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav>   
+
+    <main style="width: 80%" class="mx-auto mt-16 pt-4 flex flex-col justify-center ">
+    <section class="flex items-center">
+        <div
+          class="m-4 p-6 rounded-lg bg-white flex-1 shadow flex flex-col-reverse"
+        >
+          <h3 class="uppercase text-sm text-indigo-light font-semibold">
+            Total Number of Tasks
+          </h3>
+          <div class="text-5xl text-indigo font-semibold">
+            {{ stats.totalTasks }}
+            <span class="text-grey-dark uppercase text-base -ml-2 leading-none">tasks</span>
+          </div>
+        </div>
+
+        <div
+          class="m-4 p-6 rounded-lg bg-white flex-1 shadow flex flex-col-reverse"
+        >
+          <h3 class="uppercase text-sm text-blue-light font-semibold">
+            Total Hours
+          </h3>
+          <div class="text-5xl text-blue font-semibold">
+            {{ stats.totalHours }}
+            <span class="text-grey-dark uppercase text-base -ml-2">hrs</span>
+          </div>
+        </div>
+
+        <div
+          class="m-4 p-6 rounded-lg bg-white flex-1 shadow flex flex-col-reverse"
+        >
+          <h3 class="uppercase text-sm text-teal-light font-semibold">
+            Average Number of Hours per Task
+          </h3>
+          <div class="text-5xl text-teal font-semibold">
+            {{ stats.avgHours }}
+          </div>
+        </div>
+      </section>
+      <section
+        class="flex flex-wrap border border-grey-light border-l-0 border-r-0 border-b-0 mt-6 pt-6"
+      >
+        <a
+          href="/blogs/new"
+          class="flex-auto w-64 m-4 p-5 bg-purple-light shadow rounded-lg text-3xl text-white no-underline flex items-center justify-center text-center"
+        >
+          Add new blog
+        </a>
+        
+        <a
+        href="/followers"
+        class="flex-auto w-64 m-4 p-5 bg-purple-light shadow rounded-lg text-3xl text-white no-underline flex items-center justify-center text-center"
+      >
+        Find Users/ View Followers
+        </a>
+
+        <a
+        href="/timeline"
+        class="flex-auto w-64 m-4 p-5 bg-purple-light shadow rounded-lg text-3xl text-white no-underline flex items-center justify-center text-center"
+        >
+        Timeline/Rankings
+        </a>
+
+        <a
+        href="/delete-account"
+        class="flex-auto w-64 m-4 p-5 bg-purple-light shadow rounded-lg text-3xl text-white no-underline flex items-center justify-center text-center"
+        >
+          Delete Account
+        </a>
+
+        {{#each blogs}}
+        <a
+          class="flex-auto w-64 m-4 p-5 bg-white shadow rounded-lg text-black no-underline"
+          href="/blogs/{{ blog_id }}"
+        >
+        <h3 class="text-grey-darker uppercase text-base font-normal">
+         Date Of Post:  {{ dateOfBlog }}
+        </h3>
+        <p class="text-xl mt-2">
+          {{ title  }} <br><br>
+          <span>
+          </span>
+          {{ description }} <br><br> 
+        </p>
+        <h3 class="text-grey-darker uppercase text-base font-normal">
+            Duration Of Event : {{ duration }} hrs <br>
+            Rating Of Event   :  {{ rating }} out of 5
+           </h3>
+            </span>
+        </a>
+        {{/each}}
+      </section>
+    </main>
+  </body>
+</html>
+
+
+

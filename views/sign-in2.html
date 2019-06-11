@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+        <link rel="stylesheet" href="../public/style.css"/>
+        <link rel="stylesheet" href="../public/tailwind.css"/>
+        
+        <link rel="stylesheet" href="/style.css"/>
+        <link rel="stylesheet" href="/tailwind.css" />
+    <body>
+        <nav>
+            <p>BlogSite</p>
+            <ul>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">About Me</a></li>
+                <li><a href="#">Protfolio</a>
+                    <ul>
+                        <li><a href="#">Digital Art</a></li>
+                        <li><a href="#">Video Production</a></li>
+                        <li><a href="#">Web Development</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
+
+        <main class="h-screen flex flex-col items-center justify-center ">
+                <form class="m-4 shadow-lg rounded-lg overflow-hidden w-64" method="POST" action="/sign-in">
+                  <h1 class="text-2xl bg-grey-lighter p-4">Sign In</h1>
+            
+                  {{#if errorMessage}}
+                  <div class="bg-red-lightest text-red-dark p-4">{{ errorMessage }}</div>
+                  {{/if}}
+            
+                  <label class="m-4 block">
+                    Email Address
+                    <input class="block rounded bg-grey-lighter p-2 mt-2 w-full" type="email" name="email" required />
+                  </label>
+            
+                  <label class="m-4 block">
+                    Password
+                    <input class="block rounded bg-grey-lighter p-2 mt-2 w-full" type="password" name="password" required />
+                  </label>
+            
+                  <button type="submit" class="block w-auto rounded bg-purple text-white p-2 m-4 ml-auto">
+                    Sign In →
+                  </button>
+                </form>
+                <a href="/create-account" class="block mt-8 text-purple-light no-underline hover:underline">
+                  Create an account
+                </a>
+              </main>
+
+    </body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Community Timebank</title>
+
+    <!-- Tailwind.css is a CSS library. Read the docs here: -->
+    <!-- https://tailwindcss.com/docs/what-is-tailwind -->
+    <link rel="stylesheet" href="/tailwind.css" />
+  </head>
+  <body class="bg-grey-lightest">
+    <header class="fixed pin-x pin-t bg-purple shadow text-white">
+      <div
+        class="mx-auto h-16 p-4 flex items-center justify-between"
+        style="width: 800px"
+      >
+        <h2>Community Timebank</h2>
+        <div>
+          Signed in as {{ user.name }} ({{ user.email }})
+          <a
+          href="/blogs"
+          class="text-white border border-white rounded p-2 no-underline hover:bg-purple-light ml-4"
+        >
+          Back
+        </a>
+        </div>
+      </div>
+    </header>
+
+    <main
+      style="width: 800px"
+      class="mx-auto mt-16 pt-4 flex flex-col justify-center "
+    >
+    <main class="flex flex-col items-center justify-center ">
+    <form
+    class="m-4 shadow-lg rounded-lg w-full max-w-xs w-64"
+    method="POST"
+    action="/followers"
+  >
+    <h1 class="text-2xl bg-grey-lighter p-4">Find Users</h1>
+
+    {{#if errorMessage}}
+    <div class="bg-red-lightest text-red-dark p-4">{{ errorMessage }}</div>
+    {{/if}}
+    <label class="m-4 block">
+      Name
+      <input
+        class="block rounded bg-grey-lighter p-2 mt-2 w-full"
+        type="text"
+        name="name"
+        required
+      />
+    </label>
+
+    <label class="m-4 block">
+      Email Address
+      <input
+        class="block rounded bg-grey-lighter p-2 mt-2 w-full"
+        type="email"
+        name="email"
+        required
+      />
+    </label>
+
+    <button
+      type="submit"
+      class="block w-auto rounded bg-purple text-white p-2 m-4 ml-auto"
+    >
+      Follow User →
+    </button>
+  </form>
+</section>
+      <br>
+      <p>FOLLOWING</p>
+      <br>
+      <section>
+          
+        <div class="bg-white shadow-md rounded my-6">
+      <table class="text-left w-full border-collapse">
+        <tr>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Email</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">User ID</th>
+        </tr>
+        {{#each UsersFollowing}}
+        <tr>
+          <td class="py-4 px-6 border-b border-grey-light">{{name}}</td>
+          <td class="py-4 px-6 border-b border-grey-light">{{email}}</td>
+          <td class="py-4 px-6 border-b border-grey-light">{{userFollowingId}}</td>
+        </tr>
+        {{/each}}
+      </table>
+      </div>
+
+      </section>
+      <br>
+      <p>FOLLOWERS</p>
+      <br>
+      <section>
+          
+        <div class="bg-white shadow-md rounded my-6">
+      <table class="text-left w-full border-collapse">
+        <tr>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Email</th>
+          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">User ID</th>
+        </tr>
+        {{#each UsersFollowed}}
+        <tr>
+          <td class="py-4 px-6 border-b border-grey-light">{{name}}</td>
+          <td class="py-4 px-6 border-b border-grey-light">{{email}}</td>
+          <td class="py-4 px-6 border-b border-grey-light">{{userId}}</td>
+        </tr>
+        {{/each}}
+      </table>
+      </div>
+
+      </section>
+    </main>
+  </body>
+</html>
