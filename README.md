@@ -11,6 +11,7 @@ To Do List
 - return the followers/following statistics
 
 # work out how to handle categories
+- when a user visits/likes a category, the category should be saved as the users interest 
 - return the top 5 results for the top 3 categories (for the logged in user)
 
 # work out how to create a custome form (post new blog form) and stlye it with css

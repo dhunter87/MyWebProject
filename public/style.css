@@ -101,6 +101,11 @@ main form {
     background:rgb(145, 80, 230);
     border-bottom: 4px solid #ccc;
     border-radius: 6px;
+
+    height: 700px; 
+    overflow-x: hidden; 
+    overflow-x: auto; 
+    text-align:justify; 
 }
 
 .outercard:hover {
@@ -112,14 +117,16 @@ main form {
 
 }
 .innercard {
-    margin: 30px;
-    padding: 20px 40px 40px;
+
+    padding: 20px 20px 20px;
     max-width: 500px;
     text-align: left;
     background: white;
-    /*border-bottom: 4px solid #ccc;*/
-    border-radius: 6px;
-    border : 2px solid black;
+
+    height: 200px; 
+    overflow-x: hidden; 
+    overflow-x: auto; 
+    text-align:justify; 
 }
 
 .innercard:hover {
