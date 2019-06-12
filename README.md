@@ -30,6 +30,7 @@ To Do List
 - add deletion infomation to edit blog screen 
 - remove index.html
 - Create "Hot topics" screen
+- create new page for creating a new category
 
 # work out if you can limit the amount of characters returned in a sql query
 - on the cards in the main screen, only require a preview of the blog 

@@ -93,6 +93,10 @@ main form {
     border-radius: 100%
 }
 
+#heading {
+    padding-left: 30px
+}
+
 .outercard {
     margin: 30px;
     padding: 20px 40px 40px;

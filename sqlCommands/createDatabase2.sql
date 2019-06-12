@@ -4,6 +4,13 @@ CREATE TABLE user(
   email TEXT NOT NULL,
   password_hash TEXT NOT NULL
 );
+
+CREATE TABLE category (
+  category_id INTEGER PRIMARY KEY AUTOINCREMENT,
+	name TEXT NOT NULL,
+	description TEXT NOT NULL
+);
+
 CREATE TABLE blog(
   blog_id INTEGER PRIMARY KEY AUTOINCREMENT,
   title TEXT NOT NULL,
@@ -20,11 +27,7 @@ CREATE TABLE blog(
   FOREIGN KEY(category_id) REFERENCES  user(category_id)
   ON DELETE CASCADE
 );
-CREATE TABLE category (
-  category_id INTEGER PRIMARY KEY AUTOINCREMENT,
-	name TEXT NOT NULL,
-	description TEXT NOT NULL
-);
+
 CREATE TABLE followers (
     userId INTEGER NOT NULL,
     userFollowingId INTEGER NOT NULL,
@@ -32,6 +35,7 @@ CREATE TABLE followers (
     FOREIGN KEY (userFollowingId) REFERENCES user(user_id) ON DELETE CASCADE,
     PRIMARY KEY (userId, userFollowingId)
 );
+
 CREATE TABLE userStats(
   userStats_id INTEGER PRIMARY KEY AUTOINCREMENT,
   numberFollowing INTEGER NOT NULL,
@@ -41,4 +45,16 @@ CREATE TABLE userStats(
   AverageLikesPerBlog Integer NOT NULL,
   user_id INTEGER NOT NULL,
   FOREIGN KEY(user_id) REFERENCES user(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE interest (
+  interest_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  visitsToCategory INT NOT NULL,
+  user_id INTEGER NOT NULL,
+  category_id INTEGER NOT NULL, 
+  CONSTRAINT UserId
+  FOREIGN KEY(user_id) REFERENCES  user(user_id)
+  CONSTRAINT CategoryId
+  FOREIGN KEY(category_id) REFERENCES  user(category_id)
+  ON DELETE CASCADE
 );
