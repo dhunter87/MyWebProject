@@ -2,12 +2,12 @@ var { db, helpers } = require('../db/database')
 
 class Blog {
   // created method to insert data to the blog table 
-  static insert(title, description, duration, rating, dateOfActivity, userId, category_id) {
+  static insert(title, description, duration, rating, likes, dateOfActivity, userId, category_id) {
 
     var dateTime = Blog.GetDateTime();
 
-    var blog_id = helpers.insertRow('INSERT INTO blog (title, description, duration, rating, dateOfBlog, dateOfActivity, user_id, category_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-    [title, description, duration, rating, dateTime, dateOfActivity, userId, category_id])
+    var blog_id = helpers.insertRow('INSERT INTO blog (title, description, duration, rating, likes, dateOfBlog, dateOfActivity, user_id, category_id) VALUES (?, ?, ?, ?, ?,   ?, ?, ?, ?)',
+    [title, description, duration, rating, likes,  dateTime, dateOfActivity, userId, category_id])
     return blog_id
   }
 
@@ -43,6 +43,12 @@ class Blog {
     return rows
   }
 
+  // created method to find all of the blog related to a specified user
+  static findAllByCategory(category_id) {
+    var rows = helpers.getRows('SELECT * FROM blog WHERE category_id = ?', [category_id])
+    return rows
+  }
+
   // created method to get all fo the blog for the logged in user and all of the users they follow in date order (including correspondiong users data from users table)
   static getTimelineBlogs(user_id){
     var timeLine = helpers.getRows(`select distinct name, email, blog.* from followers inner join user on followers.userFollowingId = user.user_id or followers.userId = user.user_id inner join blog on user.user_id = blog.user_id where userid = ? order by dateOfBlog`, [user_id]);
@@ -74,6 +80,7 @@ class Blog {
     this.description = databaseRow.description
     this.duration = databaseRow.duration
     this.rating = databaseRow.rating
+    this.likes = databaseRow.likes
     this.dateOfBlog = databaseRow.dateOfBlog
     this.dateOfActivity = databaseRow.dateOfActivity
     this.user_id = databaseRow.user_id

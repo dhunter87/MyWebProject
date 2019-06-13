@@ -101,8 +101,9 @@ class UserStats {
     this.userStats_id = databaseRow.userStats_id
     this.numberFollowing = databaseRow.numberFollowing
     this.numberOfFollowers = databaseRow.numberOfFollowers
-    this.totalLikes = databaseRow.totalLikes
     this.blogsLogged = databaseRow.blogsLogged
+    this.totalLikes = databaseRow.totalLikes
+    this.averageLikesPerBlog = databaseRow.averageLikesPerBlog
     this.user_id = databaseRow.user_id
     this.userName = databaseRow.name
   }

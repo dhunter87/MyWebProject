@@ -7,6 +7,8 @@ var User = require('./models/User')
 var Blog = require('./models/Blog')
 var UserStats = require("./models/UserStats")
 var Followers = require("./models/Followers")
+// var Category = require("./models/Category")
+// var Interest = require("./models/Interest")
 
 const jwt = require('jsonwebtoken')
 
@@ -111,16 +113,33 @@ routes.get('/blogs', Verify, (req, res) => {
 
   // find the user logged in using the verify method's user id
   var loggedInUser = User.findById(req.user.userId)
-  // find the userStats assocciated with the logged in user
-  var stats = UserStats.findById(loggedInUser.userId) 
-  // find all blogs associated with the user logged in
-  var blogs = Blog.findAllByUserId(loggedInUser.userId)
+
+  // // find the userStats assocciated with the logged in user
+  // var stats = UserStats.findById(loggedInUser.userId) 
+  // // find all blogs associated with the user logged in
+  // var blogs = Blog.findAllByUserId(loggedInUser.userId)
+
+  // find the categories that the logged in user visits the most
+  var topCategories = Interest.findUsersTop3Interests(req.user.userId)
+  // find all blogs associated with the logged in users most visited categories
+
+  var blogs;
+  topCategories.forEach(category_id => {
+    blogs += 1;
+    blogs = Blog.findAllByCategory(category_id)
+  });
+
 
   // render stats for the user logged in
   res.render('list-blogs.html', {
     user: loggedInUser,
+    // category: topCategories,
     // render the blogs (for user id) from the blogs database table
     blogs: blogs
+
+    // blogs: blogs1,
+    // blogs: blogs11,
+    // blogs: blogs111
 
   })
 })
@@ -151,7 +170,7 @@ routes.post('/blogs/new', Verify, function(req, res) {
   var user_id = req.user.userId
 
   // save the new blog into the database
-  var blog = Blog.insert(form.title, form.description, form.duration, form.rating, form.dateOfActivity, user_id, form.category_id)
+  var blog = Blog.insert(form.title, form.description, form.duration, form.rating, 0, form.dateOfActivity, user_id, form.category_id)
   // get user stats, edit user stats, post user stats
   var updatedStats = UserStats.update(user_id, parseInt(form.duration), parseInt(form.rating, parseInt(form.category_id)))
   

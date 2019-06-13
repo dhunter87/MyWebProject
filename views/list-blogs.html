@@ -71,8 +71,10 @@
       <div id="second">
             <main class="flex justify-between">
                 <div class="outercard">
-                  <h2>Category: 1 (Top results)</h2><br><br>
-                  {{#each blogs}}
+                    <!-- {{#each category}} -->
+                    <!-- {{/each}} -->
+                    <h2>Category: 1 (Top results)</h2><br><br>
+                    {{#each blogs}}
                       <div class="innercard">
                         <a class=" bg-white shadow rounded-lg text-black no-underline" href="/blogs/{{ blog_id }}"> 
                           <h3 class="text-grey-darker uppercase text-base font-normal">Date Of Post:  {{ dateOfBlog }}</h3>
