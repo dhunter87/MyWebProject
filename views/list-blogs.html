@@ -70,11 +70,9 @@
 
       <div id="second">
             <main class="flex justify-between">
-                <div class="outercard">
-                    <!-- {{#each category}} -->
-                    <!-- {{/each}} -->
-                    <h2>Category: 1 (Top results)</h2><br><br>
-                    {{#each blogs}}
+                <div class="outercard" style="width: 30%">
+                    <h2>{{categoryName1}}</h2><br><br>
+                    {{#each blogs1}}
                       <div class="innercard">
                         <a class=" bg-white shadow rounded-lg text-black no-underline" href="/blogs/{{ blog_id }}"> 
                           <h3 class="text-grey-darker uppercase text-base font-normal">Date Of Post:  {{ dateOfBlog }}</h3>
@@ -86,9 +84,9 @@
                     <br>
                     {{/each}}
                 </div>
-                <div class="outercard">
-                    <h2>Category: 2 (Top results)</h2><br><br>
-                    {{#each blogs}}
+                <div class="outercard" style="width: 30%">
+                    <h2>{{categoryName2}}</h2><br><br>
+                    {{#each blogs2}}
                     <div class="innercard">
                       <a class=" bg-white shadow rounded-lg text-black no-underline" href="/blogs/{{ blog_id }}"> 
                         <h3 class="text-grey-darker uppercase text-base font-normal">Date Of Post:  {{ dateOfBlog }}</h3>
@@ -100,9 +98,9 @@
                   <br>
                   {{/each}}
                 </div>
-                <div class="outercard">
-                    <h2>Category: 3 (Top results)</h2> <br><br>
-                    {{#each blogs}}
+                <div class="outercard" style="width: 30%">
+                    <h2>{{categoryName3}}</h2> <br><br>
+                    {{#each blogs3}}
                     <div class="innercard">
                       <a class=" bg-white shadow rounded-lg text-black no-underline" href="/blogs/{{ blog_id }}"> 
                         <h3 class="text-grey-darker uppercase text-base font-normal">Date Of Post:  {{ dateOfBlog }}</h3>

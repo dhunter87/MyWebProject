@@ -7,8 +7,8 @@ var User = require('./models/User')
 var Blog = require('./models/Blog')
 var UserStats = require("./models/UserStats")
 var Followers = require("./models/Followers")
-// var Category = require("./models/Category")
-// var Interest = require("./models/Interest")
+var Category = require("./models/Category")
+var Interest = require("./models/Interest")
 
 const jwt = require('jsonwebtoken')
 
@@ -114,32 +114,49 @@ routes.get('/blogs', Verify, (req, res) => {
   // find the user logged in using the verify method's user id
   var loggedInUser = User.findById(req.user.userId)
 
-  // // find the userStats assocciated with the logged in user
-  // var stats = UserStats.findById(loggedInUser.userId) 
-  // // find all blogs associated with the user logged in
-  // var blogs = Blog.findAllByUserId(loggedInUser.userId)
+  var topCategories = Interest.findUsersTop3Interests(loggedInUser.userId)
+  console.log("logged in user : " + loggedInUser.userId);
+  console.log("logged in user : " + loggedInUser.name);
+  console.log("top categories 1");
+  console.log(topCategories)
+  
+  if(topCategories[0] == undefined)
+  {
+    var topCategories = Interest.findTop3categories()
+    console.log("top categories 2");
+    
+    console.log(topCategories)
+  }
 
-  // find the categories that the logged in user visits the most
-  var topCategories = Interest.findUsersTop3Interests(req.user.userId)
-  // find all blogs associated with the logged in users most visited categories
 
-  var blogs;
-  topCategories.forEach(category_id => {
-    blogs += 1;
-    blogs = Blog.findAllByCategory(category_id)
-  });
+  try
+  {
+    var catName1 = Category.findById(topCategories[0].category_id).name
+    var catName2 = Category.findById(topCategories[1].category_id).name
+    var catName3 = Category.findById(topCategories[2].category_id).name
 
+    var blogsForCategory = Blog.findAllByCategory(topCategories[0].category_id)
+    var blogsForCategory1 = Blog.findAllByCategory(topCategories[1].category_id)
+    var blogsForCategory2 = Blog.findAllByCategory(topCategories[2].category_id)
 
+  }catch(exception)
+  {
+
+  }
+  
   // render stats for the user logged in
   res.render('list-blogs.html', {
     user: loggedInUser,
-    // category: topCategories,
-    // render the blogs (for user id) from the blogs database table
-    blogs: blogs
 
-    // blogs: blogs1,
-    // blogs: blogs11,
-    // blogs: blogs111
+    categoryName1: catName1,
+    categoryName2: catName2,
+    categoryName3: catName3,
+    // render the blogs (for user id) from the blogs database table
+    // blogs: blogs
+
+    blogs1: blogsForCategory,
+    blogs2: blogsForCategory1,
+    blogs3: blogsForCategory2
 
   })
 })

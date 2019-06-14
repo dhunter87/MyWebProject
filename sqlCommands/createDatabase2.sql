@@ -49,7 +49,7 @@ CREATE TABLE userStats(
 
 CREATE TABLE interest (
   interest_id INTEGER PRIMARY KEY AUTOINCREMENT,
-  visitsToCategory INT NOT NULL,
+  visitsToCategory INTEGER NOT NULL,
   user_id INTEGER NOT NULL,
   category_id INTEGER NOT NULL, 
   CONSTRAINT UserId
