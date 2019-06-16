@@ -283,7 +283,7 @@ routes.get('/blogs/:id/delete', Verify, function(req, res) {
   
 })
 
-// show the edit blog form for a specific blog
+// show the list blog per category screen
 routes.get('/list-blogs-per-category/:category_id', Verify, function(req, res) {
   
   // get user details of logged in user
@@ -313,6 +313,23 @@ routes.get('/list-blogs-per-category/:category_id', Verify, function(req, res) {
     categoryName1: category.name,
     // blog: blogRecord,
     blogs1: blogsForCategory
+  })
+})
+
+// show the list blog per category screen
+routes.get('/my-blogs', Verify, function(req, res) {
+  
+  // get user details of logged in user
+  var loggedInUser = User.findById(req.user.userId)
+
+  // get the blog of for the category
+  // var blog = Blog.findAllByCategory(req.params.category_id)
+  var blogsForUser = Blog.findAllByUserId(loggedInUser.userId)
+
+  // render the edit-contribtuions screen with the users details and all their contribtuions
+  res.render('my-blogs.html', {
+    user: loggedInUser,
+    blogs1: blogsForUser
   })
 })
 

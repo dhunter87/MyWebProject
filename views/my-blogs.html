@@ -24,7 +24,7 @@
             Signed in as {{ user.name }} ({{ user.email }})
             </div>  
             <div id="sign-out"> 
-              <a href="/sign-out" class="text-white border border-white rounded p-2 no-underline hover:bg-purple-light ml-4">Sign Out</a>
+              <a href="/blogs" class="text-white border border-white rounded p-2 no-underline hover:bg-purple-light ml-4">back</a>
             </div>
             <ul>
                 <li><a href="#">Hot Topics</a></li>
@@ -38,7 +38,7 @@
                         <li><a href="/delete-account">Delete Profile</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Home</a></li>
+                <li><a href="/blogs">Home</a></li>
             </ul>
         </nav>
       </div>
@@ -47,6 +47,39 @@
 
     <!-- main content section of web page -->
     <main style="width: 1600px" class="mx-auto mt-16 pt-4 items-center justify-between">
+
+      <section class="flex items-center">
+        <div class="m-4 p-6 rounded-lg bg-white flex-1 shadow flex flex-col-reverse">
+          <h3 class="uppercase text-sm text-indigo-light font-semibold">Total Number of People Following</h3>
+          <div class="text-5xl text-indigo font-semibold">{{ stats.totalTasks }}
+            <span class="text-grey-dark uppercase text-base -ml-2 leading-none">users</span></div>
+        </div>
+
+        <div class="m-4 p-6 rounded-lg bg-white flex-1 shadow flex flex-col-reverse">
+          <h3 class="uppercase text-sm text-indigo-light font-semibold">Total Number of Followers</h3>
+          <div class="text-5xl text-indigo font-semibold">{{ stats.totalHours }}
+            <span class="text-grey-dark uppercase text-base -ml-2">users</span></div>
+        </div>
+
+        <div class="m-4 p-6 rounded-lg bg-white flex-1 shadow flex flex-col-reverse">
+          <h3 class="uppercase text-sm text-indigo-light font-semibold">Average Number of Likes Per Blog</h3>
+          <div class="text-5xl text-indigo font-semibold">{{ stats.totalHours }}
+            <span class="text-grey-dark uppercase text-base -ml-2">likes</span></div>
+        </div>
+
+      </section>
+
+      {{#each blogs1}}
+      <div class="innercard">
+        <a class=" bg-white shadow rounded-lg text-black no-underline" href="/blogs/{{ blog_id }}"> 
+          <h3 class="text-grey-darker uppercase text-base font-normal">Date Of Post:  {{ dateOfBlog }}</h3>
+          <p class="text-xl mt-2">{{ title  }}<br><br></p>
+          <p class="text-xl mt-2">{{ description }}<br><br></p>
+          <h3 class="text-grey-darker uppercase text-base font-normal">Duration Of Event : {{ duration }} hrs<br>Rating Of Event : {{ rating }} out of 5</h3>
+        </a>
+      </div>
+    <br>
+    {{/each}}
 
     </main>
       <script>
