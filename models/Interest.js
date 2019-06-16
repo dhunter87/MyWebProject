@@ -8,15 +8,24 @@ class Interest {
     return interest_id
   }
 
-  static update(user_id){
+  static update(user_id, category_id){
     // get user logged in user's statistics record from the databse
-    var row = helpers.getRow('SELECT visitsToCategory FROM userStats WHERE user_id = ?', [user_id])
-
-    // add 1 to the value of the blogs Logged column of the database
-    var visitsToCategory = row.visitsToCategory += 1;
-
+    var row = helpers.getRow('SELECT visitsToCategory FROM interest WHERE user_id = ? AND category_id = ?', [user_id, category_id])
+    var visitsToCategory
+    try
+    {
+      console.log("try block exectured");
+      
+      visitsToCategory = row.visitsToCategory += 1;
+    }
+    catch(err)
+    {
+      console.log("catch block exectured");
+      visitsToCategory = 1;
+      helpers.insertRow('INSERT INTO interest (visitsToCategory, user_id, category_id) VALUES (?, ?, ?)',[visitsToCategory, user_id, category_id])
+    }
     // update the original row in the database with the new statistics 
-    var row2 = helpers.getRow('UPDATE userStats SET visitsToCategory = ? WHERE user_id = ?', [visitsToCategory, user_id])
+    var row2 = helpers.getRow('UPDATE interest SET visitsToCategory = ? WHERE user_id = ? AND category_id = ?', [visitsToCategory, user_id, category_id])
     return row2
   }
 
@@ -39,8 +48,8 @@ class Interest {
     return rows
   }
 
-  static findTop3categories(user_id) {
-    var rows = helpers.getRows('SELECT * FROM interest ORDER BY visitsToCategory DESC LIMIT 3', [user_id])
+  static findTop3categories() {
+    var rows = helpers.getRows('SELECT * FROM category ORDER BY totalNumberOfVisits DESC LIMIT 3')
     return rows
   }
 

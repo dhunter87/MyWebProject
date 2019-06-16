@@ -179,7 +179,9 @@ routes.post('/blogs/new', Verify, function(req, res) {
   // save the new blog into the database
   var blog = Blog.insert(form.title, form.description, form.duration, form.rating, 0, form.dateOfActivity, user_id, form.category_id)
   // get user stats, edit user stats, post user stats
-  var updatedStats = UserStats.update(user_id, parseInt(form.duration), parseInt(form.rating, parseInt(form.category_id)))
+  var updatedStats = UserStats.update(user_id)
+  var updateInterests = Interest.update(user_id, form.category_id)
+  var updateCategory = Category.update(form.category_id)
   
   // redirect back to main screen
   res.redirect('/blogs')
@@ -291,21 +293,11 @@ routes.get('/list-blogs-per-category/:category_id', Verify, function(req, res) {
   
   // get the categoryid
   var category = Category.findById(req.params.category_id)
+  var updateInterests = Interest.update(loggedInUser.userId, category.category_id)
+  var updateCategory = Category.update(category.category_id)
   
   // get the blog of for the category
-  // var blog = Blog.findAllByCategory(req.params.category_id)
   var blogsForCategory = Blog.findAllByCategory(category.category_id)
-
-  // construct the real blog record for this id from the database
-  // var blogRecord = {
-  //   blog_id: req.params.id,
-  //   title: blog.title,
-  //   description: blog.description,
-  //   duration: blog.duration,
-  //   rating: blog.rating,
-  //   dateOfBlog: blog.dateOfBlog,
-  //   dateOfActivity: blog.dateOfActivity
-  // }
 
   // render the edit-contribtuions screen with the users details and all their contribtuions
   res.render('list-blogs-per-category.html', {
