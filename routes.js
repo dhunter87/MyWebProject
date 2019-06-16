@@ -143,8 +143,6 @@ routes.get('/blogs', Verify, (req, res) => {
     category1: category1,
     category2: category2,
     category3: category3,
-    // render the blogs (for user id) from the blogs database table
-    // blogs: blogs
 
     blogs1: blogsForCategory,
     blogs2: blogsForCategory1,
