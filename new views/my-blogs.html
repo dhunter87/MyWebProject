@@ -20,14 +20,35 @@
         <div class="mx-auto h-16 p-4 flex items-center justify-between" style="width: 1600px">
         <nav>
             <p>BlogSite</p>
+            <div id="username">
+            Signed in as {{ user.name }} ({{ user.email }})
+            </div>  
+            <div id="sign-out"> 
+              <a href="/sign-out" class="text-white border border-white rounded p-2 no-underline hover:bg-purple-light ml-4">Sign Out</a>
+            </div>
+            <ul>
+                <li><a href="#">Hot Topics</a></li>
+                <li><a href="/blogs/new">New Blog</a></li>
+                <li><a href="#">profile</a>
+                    <ul>
+                        <li><a href="/followers">Connections</a></li>
+                        <li><a href="#">My Blogs</a></li>
+                        <li><a href="#">Community blogs</a></li>
+                        <li><a href="#">Edit Profile</a></li>
+                        <li><a href="/delete-account">Delete Profile</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Home</a></li>
+            </ul>
         </nav>
       </div>
     </header>
   </div>
-  <main class="h-screen flex flex-col items-center justify-center ">
-    <a href="/sign-in" style="font: size 64px;; line-height:1.25em; text-align:center;">
-    <span style="letter-spacing:0em;"><span style="font-size:64px;">BlogSite!</span></span></a>
-</main>
+
+    <!-- main content section of web page -->
+    <main style="width: 1600px" class="mx-auto mt-16 pt-4 items-center justify-between">
+
+    </main>
       <script>
         var prevScrollpos = window.pageYOffset;
         window.onscroll = function() {

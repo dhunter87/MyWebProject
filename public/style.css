@@ -4,7 +4,7 @@
 }
 
 body {
-    background-image: url(../img/water.jpg);
+    /* background-image: url(../img/water.jpg); */
     background-size: cover;
 }
 
@@ -100,7 +100,7 @@ main form {
 .outercard {
     margin: 30px;
     padding: 20px 40px 40px;
-    max-width: 500px;
+    /* max-width: 500px; */
     text-align: left;
     background:rgb(145, 80, 230);
     border-bottom: 4px solid #ccc;
@@ -123,7 +123,7 @@ main form {
 .innercard {
 
     padding: 20px 20px 20px;
-    max-width: 500px;
+    /* max-width: 500px; */
     text-align: left;
     background: white;
 

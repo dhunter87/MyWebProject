@@ -1,89 +1,122 @@
 <!DOCTYPE html>
 <html>
+
+<!-- load metadata -->
   <head>
     <meta charset="utf-8" />
-    <title>Community Timebank - Edit Blog</title>
+    <title>BlogSite</title>
+    <link rel="stylesheet" href="../public/tailwind.css"/>
+    <link rel="stylesheet" href="../public/style.css"/>
 
-    <!-- Tailwind.css is a CSS library. Read the docs here: -->
-    <!-- https://tailwindcss.com/docs/what-is-tailwind -->
     <link rel="stylesheet" href="/tailwind.css" />
+    <link rel="stylesheet" href="/style.css" />
   </head>
+
+  <!-- navigation bar -->
   <body class="bg-grey-lightest">
-    <header class="fixed pin-x pin-t bg-purple shadow text-white">
-      <div
-        class="mx-auto h-16 p-4 flex items-center justify-between"
-        style="width: 800px"
-      >
-        <h2><a href="/blogs" class="text-white no-underline">Community Timebank</a></h2>
-        <div>
-          Signed in as {{ user.name }} ({{ user.email }})
-          <a
-            href="/blogs"
-            class="text-white border border-white rounded p-2 no-underline hover:bg-purple-light ml-4"
-          >
-            Back
-          </a>
-        </div>
+
+    <div id="navbar">
+      <header  class="pin-x pin-t bg-purple shadow text-white">
+        <div class="mx-auto h-16 p-4 flex items-center justify-between" style="width: 1600px">
+        <nav>
+            <p>BlogSite</p>
+            <div id="username">
+            Signed in as {{ user.name }} ({{ user.email }})
+            </div>  
+            <div id="sign-out"> 
+              <a href="/sign-out" class="text-white border border-white rounded p-2 no-underline hover:bg-purple-light ml-4">Sign Out</a>
+            </div>
+            <ul>
+                <li><a href="#">Hot Topics</a></li>
+                <li><a href="/blogs/new">New Blog</a></li>
+                <li><a href="#">profile</a>
+                    <ul>
+                        <li><a href="/followers">Connections</a></li>
+                        <li><a href="#">My Blogs</a></li>
+                        <li><a href="#">Community blogs</a></li>
+                        <li><a href="#">Edit Profile</a></li>
+                        <li><a href="/delete-account">Delete Profile</a></li>
+                    </ul>
+                </li>
+                <li><a href="/blogs">Home</a></li>
+            </ul>
+        </nav>
       </div>
     </header>
+  </div>
 
-    <main class="h-screen flex flex-col items-center justify-center">
-      <form
-        class="m-4 shadow-lg rounded-lg overflow-hidden w-64"
-        method="POST"
-        action="/blogs/{{ blog.blog_id}}"
+
+
+  <main class="h-screen flex flex-col items-center justify-center">
+    <form
+      class="m-4 shadow-lg rounded-lg overflow-hidden w-64"
+      method="POST"
+      action="/blogs/{{ blog.blog_id}}"
+    >
+      <h1 class="text-2xl bg-grey-lighter p-4">Edit blog</h1>
+
+      {{#if errorMessage}}
+    <div class="bg-red-lightest text-red-dark p-4">{{ errorMessage }}</div>
+    {{/if}}
+      <label class="m-4 block">
+        Date
+        <input
+          class="block rounded bg-grey-lighter p-2 mt-2 w-full"
+          type="datetime-local"
+          name="dateOfBlog"
+          value="{{ blog.dateOfBlog }}"
+          required
+        />
+      </label>
+
+      <label class="m-4 block">
+        Task
+        <input
+          class="block rounded bg-grey-lighter p-2 mt-2 w-full"
+          type="text"
+          name="task"
+          value="{{ blog.task }}"
+          required
+        />
+      </label>
+
+      <label class="m-4 block">
+        Duration (hrs)
+        <input
+          class="block rounded bg-grey-lighter p-2 mt-2 w-full"
+          type="number"
+          name="duration"
+          value="{{ blog.duration }}"
+          required
+        />
+      </label>
+
+      <button
+        type="submit"
+        class="block w-auto rounded bg-purple text-white p-2 m-4 ml-auto"
       >
-        <h1 class="text-2xl bg-grey-lighter p-4">Edit blog</h1>
-
-        {{#if errorMessage}}
-      <div class="bg-red-lightest text-red-dark p-4">{{ errorMessage }}</div>
-      {{/if}}
-        <label class="m-4 block">
-          Date
-          <input
-            class="block rounded bg-grey-lighter p-2 mt-2 w-full"
-            type="datetime-local"
-            name="dateOfBlog"
-            value="{{ blog.dateOfBlog }}"
-            required
-          />
-        </label>
-
-        <label class="m-4 block">
-          Task
-          <input
-            class="block rounded bg-grey-lighter p-2 mt-2 w-full"
-            type="text"
-            name="task"
-            value="{{ blog.task }}"
-            required
-          />
-        </label>
-
-        <label class="m-4 block">
-          Duration (hrs)
-          <input
-            class="block rounded bg-grey-lighter p-2 mt-2 w-full"
-            type="number"
-            name="duration"
-            value="{{ blog.duration }}"
-            required
-          />
-        </label>
-
-        <button
-          type="submit"
-          class="block w-auto rounded bg-purple text-white p-2 m-4 ml-auto"
-        >
-          Edit Blog →
-        </button>
-      </form>
-      <a
-        href="/blogs/{{ blog.blog_id }}/delete"
-        class="block mt-8 text-red-light no-underline hover:underline"
-      >
-        Delete blog
-      </a>
-    </main>
+        Edit Blog →
+      </button>
+    </form>
+    <a
+      href="/blogs/{{ blog.blog_id }}/delete"
+      class="block mt-8 text-red-light no-underline hover:underline"
+    >
+      Delete blog
+    </a>
+  </main>
+      <script>
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+        var currentScrollPos = window.pageYOffset;
+          if (prevScrollpos > currentScrollPos) {
+            document.getElementById("navbar").style.top = "0";
+          } else {
+            document.getElementById("navbar").style.top = "-60px";
+          }
+          prevScrollpos = currentScrollPos;
+        }
+      </script>
   </body>
+
 </html>

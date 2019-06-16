@@ -115,25 +115,17 @@ routes.get('/blogs', Verify, (req, res) => {
   var loggedInUser = User.findById(req.user.userId)
 
   var topCategories = Interest.findUsersTop3Interests(loggedInUser.userId)
-  console.log("logged in user : " + loggedInUser.userId);
-  console.log("logged in user : " + loggedInUser.name);
-  console.log("top categories 1");
-  console.log(topCategories)
   
   if(topCategories[0] == undefined)
   {
     var topCategories = Interest.findTop3categories()
-    console.log("top categories 2");
-    
-    console.log(topCategories)
   }
-
 
   try
   {
-    var catName1 = Category.findById(topCategories[0].category_id).name
-    var catName2 = Category.findById(topCategories[1].category_id).name
-    var catName3 = Category.findById(topCategories[2].category_id).name
+    var category1 = Category.findById(topCategories[0].category_id)
+    var category2 = Category.findById(topCategories[1].category_id)
+    var category3 = Category.findById(topCategories[2].category_id)
 
     var blogsForCategory = Blog.findAllByCategory(topCategories[0].category_id)
     var blogsForCategory1 = Blog.findAllByCategory(topCategories[1].category_id)
@@ -148,9 +140,9 @@ routes.get('/blogs', Verify, (req, res) => {
   res.render('list-blogs.html', {
     user: loggedInUser,
 
-    categoryName1: catName1,
-    categoryName2: catName2,
-    categoryName3: catName3,
+    category1: category1,
+    category2: category2,
+    category3: category3,
     // render the blogs (for user id) from the blogs database table
     // blogs: blogs
 
@@ -291,6 +283,39 @@ routes.get('/blogs/:id/delete', Verify, function(req, res) {
     })
   }
   
+})
+
+// show the edit blog form for a specific blog
+routes.get('/list-blogs-per-category/:category_id', Verify, function(req, res) {
+  
+  // get user details of logged in user
+  var loggedInUser = User.findById(req.user.userId)
+  
+  // get the categoryid
+  var category = Category.findById(req.params.category_id)
+  
+  // get the blog of for the category
+  // var blog = Blog.findAllByCategory(req.params.category_id)
+  var blogsForCategory = Blog.findAllByCategory(category.category_id)
+
+  // construct the real blog record for this id from the database
+  // var blogRecord = {
+  //   blog_id: req.params.id,
+  //   title: blog.title,
+  //   description: blog.description,
+  //   duration: blog.duration,
+  //   rating: blog.rating,
+  //   dateOfBlog: blog.dateOfBlog,
+  //   dateOfActivity: blog.dateOfActivity
+  // }
+
+  // render the edit-contribtuions screen with the users details and all their contribtuions
+  res.render('list-blogs-per-category.html', {
+    user: loggedInUser,
+    categoryName1: category.name,
+    // blog: blogRecord,
+    blogs1: blogsForCategory
+  })
 })
 
 // show the followers page

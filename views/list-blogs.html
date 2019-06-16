@@ -35,7 +35,7 @@
                         <li><a href="/delete-account">Delete Profile</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Home</a></li>
+                <li><a href="/">Home</a></li>
             </ul>
         </nav>
       </div>
@@ -71,7 +71,8 @@
       <div id="second">
             <main class="flex justify-between">
                 <div class="outercard" style="width: 30%">
-                    <h2>{{categoryName1}}</h2><br><br>
+                  <a href="/list-blogs-per-category/{{category1.category_id}}">
+                    <h2>{{category1.name}}</h2><br><br>
                     {{#each blogs1}}
                       <div class="innercard">
                         <a class=" bg-white shadow rounded-lg text-black no-underline" href="/blogs/{{ blog_id }}"> 
@@ -83,9 +84,11 @@
                       </div>
                     <br>
                     {{/each}}
+                    </a>
                 </div>
                 <div class="outercard" style="width: 30%">
-                    <h2>{{categoryName2}}</h2><br><br>
+                  <a href="/list-blogs-per-category/{{category2.category_id}}">
+                    <h2>{{category2.name}}</h2><br><br>
                     {{#each blogs2}}
                     <div class="innercard">
                       <a class=" bg-white shadow rounded-lg text-black no-underline" href="/blogs/{{ blog_id }}"> 
@@ -97,9 +100,11 @@
                     </div>
                   <br>
                   {{/each}}
+                </a>
                 </div>
                 <div class="outercard" style="width: 30%">
-                    <h2>{{categoryName3}}</h2> <br><br>
+                  <a href="/list-blogs-per-category/{{category3.category_id}}">
+                    <h2>{{category3.name}}</h2> <br><br>
                     {{#each blogs3}}
                     <div class="innercard">
                       <a class=" bg-white shadow rounded-lg text-black no-underline" href="/blogs/{{ blog_id }}"> 
@@ -111,6 +116,7 @@
                     </div>
                   <br>
                   {{/each}}
+                </a>
                 </div>
             </main>
         </div>

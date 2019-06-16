@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <meta charset="utf-8" />
-  <title>Community Timebank - Sign In</title>
+<!-- load metadata -->
+  <head>
+    <meta charset="utf-8" />
+    <title>BlogSite</title>
+    <link rel="stylesheet" href="../public/tailwind.css"/>
+    <link rel="stylesheet" href="../public/style.css"/>
 
-  <!-- Tailwind.css is a CSS library. Read the docs here: -->
-  <!-- https://tailwindcss.com/docs/what-is-tailwind -->
-  <link rel="stylesheet" href="/tailwind.css" />
-</head>
+    <link rel="stylesheet" href="/tailwind.css" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
 
-<body>
+  <!-- navigation bar -->
+  <body class="bg-grey-lightest">
+
+    <div id="navbar">
+      <header  class="pin-x pin-t bg-purple shadow text-white">
+        <div class="mx-auto h-16 p-4 flex items-center justify-between" style="width: 1600px">
+        <nav>
+            <p>BlogSite</p>
+        </nav>
+      </div>
+    </header>
+  </div>
   <main class="h-screen flex flex-col items-center justify-center ">
     <form class="m-4 shadow-lg rounded-lg overflow-hidden w-64" method="POST" action="/sign-in">
       <h1 class="text-2xl bg-grey-lighter p-4">Sign In</h1>
@@ -37,6 +50,18 @@
       Create an account
     </a>
   </main>
-</body>
+      <script>
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+        var currentScrollPos = window.pageYOffset;
+          if (prevScrollpos > currentScrollPos) {
+            document.getElementById("navbar").style.top = "0";
+          } else {
+            document.getElementById("navbar").style.top = "-60px";
+          }
+          prevScrollpos = currentScrollPos;
+        }
+      </script>
+  </body>
 
 </html>

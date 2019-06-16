@@ -48,81 +48,30 @@
 
 
     <!-- main content section of web page -->
-    <main class="h-screen flex flex-col items-center justify-center">
-      <form
-        class="m-4 shadow-lg rounded-lg overflow-hidden w-64"
-        method="POST"
-        action="/blogs/new"
-      >
-        <h1 class="text-2xl bg-grey-lighter p-4">Add New Post</h1>
+    <main style="width: 1600px" class="mx-auto mt-16 pt-4 items-center justify-between">
 
-        <label class="m-4 block">
-          Title
-          <input
-            class="block rounded bg-grey-lighter p-2 mt-2 w-full"
-            type="text"
-            name="title"
-            required
-          />
-        </label>
 
-        <label class="m-4 block">
-          Description
-          <input
-            class="block rounded bg-grey-lighter p-2 mt-2 w-full"
-            type="text"
-            name="description"
-            required
-          />
-        </label>
-
-        <label class="m-4 block">
-          Duration in hrs
-          <input
-            class="block rounded bg-grey-lighter p-2 mt-2 w-full"
-            type="number"
-            name="duration"
-            required
-          />
-        </label>
-
-        <label class="m-4 block">
-          Rating
-          <input
-            class="block rounded bg-grey-lighter p-2 mt-2 w-full"
-            type="number"
-            name="rating"
-            required
-          />
-        </label>
-
-        <label class="m-4 block">
-          Date and Time of Activity
-          <input
-            class="block rounded bg-grey-lighter p-2 mt-2 w-full"
-            type="datetime-local"
-            name="dateOfActivity"
-            required
-          />
-        </label>
-
-        <label class="m-4 block">
-          Category Id  (If Applicable)
-          <input
-            class="block rounded bg-grey-lighter p-2 mt-2 w-full"
-            type="number"
-            name="category_id"
-            required
-          />
-        </label>
-
-        <button
-          type="submit"
-          class="block w-auto rounded bg-purple text-white p-2 m-4 ml-auto"
-        >
-          Log Blog →
-        </button>
-      </form>
+        <div>
+            <main class="flex justify-between">
+                <div class="outercard" style="width: 90%">
+                    <h2>{{categoryName1}}</h2><br><br>
+                    {{#each blogs1}}
+                      <div class="innercard">
+                        <a class=" bg-white shadow rounded-lg text-black no-underline" href="/blogs/{{ blog_id }}"> 
+                          <h3 class="text-grey-darker uppercase text-base font-normal">Date Of Post:  {{ dateOfBlog }}</h3>
+                          <p class="text-xl mt-2">{{ title  }}<br><br></p>
+                          <p class="text-xl mt-2">{{ description }}<br><br></p>
+                          <h3 class="text-grey-darker uppercase text-base font-normal">Duration Of Event : {{ duration }} hrs<br>Rating Of Event : {{ rating }} out of 5</h3>
+                        </a>
+                      </div>
+                    <br>
+                    {{/each}}
+                </div>
+            </div>
+                  <!-- buttons/links to other web pages -->
+      <section class="flex flex-wrap border border-grey-light border-l-0 border-r-0 border-b-0 mt-6 pt-6">
+        <a href="/blogs/new" class="flex-auto w-64 m-4 p-5 bg-purple-light shadow rounded-lg text-3xl text-white no-underline flex items-center justify-center text-center">Add new blog</a>
+      </section>
     </main>
       <script>
         var prevScrollpos = window.pageYOffset;
