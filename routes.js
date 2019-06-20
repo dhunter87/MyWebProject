@@ -325,6 +325,24 @@ routes.get('/my-blogs', Verify, function(req, res) {
   })
 })
 
+
+// show the list blog per category screen
+routes.get('/hot-topics', Verify, function(req, res) {
+  
+  // get user details of logged in user
+  var loggedInUser = User.findById(req.user.userId)
+
+  // get the most popular categories
+  var categories = Category.findTopcategories();
+
+  // render the edit-contribtuions screen with the users details and all their contribtuions
+  res.render('hot-topics.html', {
+    user: loggedInUser,
+    category: categories
+  })
+})
+
+
 // show the followers page
 routes.get('/followers', Verify, function(req, res) {
 

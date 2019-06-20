@@ -22,6 +22,11 @@ class Category {
     }
   }
 
+  static findTopcategories() {
+    var rows = helpers.getRows('SELECT * FROM category ORDER BY totalNumberOfVisits DESC')
+    return rows
+  }
+
   static update(category_id){
     // get user logged in user's statistics record from the databse
     var row = helpers.getRow('SELECT totalNumberOfVisits FROM category WHERE category_id = ?', [category_id])

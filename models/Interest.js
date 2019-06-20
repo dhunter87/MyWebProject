@@ -48,10 +48,6 @@ class Interest {
     return rows
   }
 
-  static findTop3categories() {
-    var rows = helpers.getRows('SELECT * FROM category ORDER BY totalNumberOfVisits DESC LIMIT 3')
-    return rows
-  }
 
   // created constructor for the blog object
   constructor(databaseRow) {
