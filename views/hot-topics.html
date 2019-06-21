@@ -46,41 +46,29 @@
   </div>
 
     <!-- main content section of web page -->
-    <main style="width: 90%" class="mx-auto mt-16 pt-4 items-center justify-between">    
-<!-- 
-        {{#each category}}
-          <section class="items-center justify-between">
-          <div style="width: 50%; height: 250px" class="m-4 p-6 rounded-lg bg-white shadow">
-            <h3 class="text-5xl text-indigo font-semibold">Category Name : {{name}}</h3>
-            <h3 class="text-5xl text-indigo font-semibold">Category Id : {{category_id}}</h3>
-            <h3 class="text-5xl text-indigo font-semibold">Visits To Category : {{totalNumberOfVisits}}</h3>
-          </div>
-        </section>
-        {{/each}} -->
-
-
-        <div>
-            <main class="flex justify-between">
-                <div class="outercard" style="width: 90%">
-                    <h2>Hot Topics</h2><br><br>
-                    {{#each category}}
-                      <div class="innercard" style="transform: scale(1.0)">
-                        <a class=" bg-white shadow rounded-lg text-black no-underline" href="/list-blogs-per-category/{{ category_id }}"> 
-                          <h3 class="text-grey-darker uppercase text-base font-normal">Category Name {{ name }}</h3>
-                          <p class="text-xl mt-2">Category ID  {{ category_id  }}<br><br></p>
-                          <p class="text-xl mt-2">Description {{ description }}<br><br></p>
-                          <h3 class="text-grey-darker uppercase text-base font-normal">Number of Visits : {{ totalNumberOfVisits }}</h3>
-                        </a>
-                      </div>
-                    <br>
-                    {{/each}}
+  <main style="width: 90%" class="mx-auto mt-16 pt-4 items-center justify-between">    
+    <div>
+      <main class="flex justify-between">
+          <div class="outercard" style="width: 100%">
+              <h2>Hot Topics</h2><br><br>
+              {{#each category}}
+                <div class="innercard" style="transform: scale(1.0)">
+                  <a class=" bg-white shadow rounded-lg text-black no-underline" href="/list-blogs-per-category/{{ category_id }}"> 
+                    <h3 class="text-grey-darker uppercase text-base font-normal">Category Name {{ name }}</h3>
+                    <p class="text-xl mt-2">Category ID  {{ category_id  }}<br><br></p>
+                    <p class="text-xl mt-2">Description {{ description }}<br><br></p>
+                    <h3 class="text-grey-darker uppercase text-base font-normal">Number of Visits : {{ totalNumberOfVisits }}</h3>
+                  </a>
                 </div>
-            </div>
+              <br>
+              {{/each}}
+          </div>
+      </div>
 
-                              <!-- buttons/links to other web pages -->
+                                <!-- buttons/links to other web pages -->
       <section class="flex flex-wrap border border-grey-light border-l-0 border-r-0 border-b-0 mt-6 pt-6">
-          <a href="/blogs/new" class="flex-auto w-64 m-4 p-5 bg-purple-light shadow rounded-lg text-3xl text-white no-underline flex items-center justify-center text-center">Add new blog</a>
-        </section>
+        <a href="/blogs/new" class="flex-auto w-64 m-4 p-5 bg-purple-light shadow rounded-lg text-3xl text-white no-underline flex items-center justify-center text-center">Add new blog</a>
+      </section>
         
     </main>
       <script>

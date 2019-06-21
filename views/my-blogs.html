@@ -69,7 +69,7 @@
 
       </section>
 
-      {{#each blogs1}}
+      <!-- {{#each blogs1}}
       <div class="innercard">
         <a class=" bg-white shadow rounded-lg text-black no-underline" href="/blogs/{{ blog_id }}"> 
           <h3 class="text-grey-darker uppercase text-base font-normal">Date Of Post:  {{ dateOfBlog }}</h3>
@@ -79,7 +79,31 @@
         </a>
       </div>
     <br>
-    {{/each}}
+    {{/each}} -->
+
+    <div>
+      <main class="flex justify-between">
+          <div class="outercard" style="width: 100%">
+              <h2>My Blogs</h2><br><br>
+              {{#each blogs1}}
+                <div class="innercard" style="transform: scale(1.0)">
+                  <a class=" bg-white shadow rounded-lg text-black no-underline" href="/blogs/{{ blog_id }}"> 
+                    <h3 class="uppercase text-base font-normal">Date Of Post:  {{ dateOfBlog }}</h3>
+                    <h3 class="uppercase text-base font-normal">Blog Title : {{ title }}</h3>
+                    <p class="text-xl mt-2">blog ID : {{ blog_id  }}<br><br></p>
+                    <p class="text-xl mt-2">Description : {{ description }}<br><br></p>
+                    <h3 class="uppercase text-base font-normal">Duration Of Event : {{ duration }}</h3>
+                  </a>
+                </div>
+              <br>
+              {{/each}}
+          </div>
+      </div>
+
+                                <!-- buttons/links to other web pages -->
+      <section class="flex flex-wrap border border-grey-light border-l-0 border-r-0 border-b-0 mt-6 pt-6">
+        <a href="/blogs/new" class="flex-auto w-64 m-4 p-5 bg-purple-light shadow rounded-lg text-3xl text-white no-underline flex items-center justify-center text-center">Add new blog</a>
+      </section>
 
     </main>
       <script>
