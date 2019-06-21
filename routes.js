@@ -116,9 +116,11 @@ routes.get('/blogs', Verify, (req, res) => {
 
   var topCategories = Interest.findUsersTop3Interests(loggedInUser.userId)
   
-  if(topCategories[0] == undefined)
+  if(topCategories[0] == undefined ||
+    topCategories[1] == undefined ||
+    topCategories[2] == undefined)
   {
-    var topCategories = Interest.findTop3categories()
+    var topCategories = Category.findTopcategories()
   }
 
   try
