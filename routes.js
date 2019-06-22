@@ -327,6 +327,25 @@ routes.get('/my-blogs', Verify, function(req, res) {
   })
 })
 
+// show the list blog per category screen
+routes.get('/community-blogs', Verify, function(req, res) {
+  
+  // get user details of logged in user
+  var loggedInUser = User.findById(req.user.userId)
+
+  // get the blog of for the category
+  // var blog = Blog.findAllByCategory(req.params.category_id)
+  var communitBlogs = Blog.getTCommunityBlogs(loggedInUser.userId)
+  console.log(communitBlogs);
+  
+
+  // render the edit-contribtuions screen with the users details and all their contribtuions
+  res.render('community-blogs.html', {
+    user: loggedInUser,
+    blogs1: communitBlogs
+  })
+})
+
 
 // show the list blog per category screen
 routes.get('/hot-topics', Verify, function(req, res) {

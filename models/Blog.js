@@ -50,7 +50,7 @@ class Blog {
   }
 
   // created method to get all fo the blog for the logged in user and all of the users they follow in date order (including correspondiong users data from users table)
-  static getTimelineBlogs(user_id){
+  static getTCommunityBlogs(user_id){
     var timeLine = helpers.getRows(`select distinct name, email, blog.* from followers inner join user on followers.userFollowingId = user.user_id or followers.userId = user.user_id inner join blog on user.user_id = blog.user_id where userid = ? order by dateOfBlog`, [user_id]);
     return timeLine
   }
